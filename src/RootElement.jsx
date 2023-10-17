@@ -1,7 +1,10 @@
+import Header from "./components/Header/Header";
+import {Outlet} from 'react-router-dom';
 const RootElement = () => {
     return (
         <div>
-           <h1>Hello Prithibi!!</h1>
+            <Header></Header>
+            <Outlet></Outlet>
         </div>
     );
 };
