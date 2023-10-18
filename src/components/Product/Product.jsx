@@ -1,7 +1,6 @@
 import { AiFillStar } from "react-icons/ai";
 import PropTypes from "prop-types";
 import {Link} from 'react-router-dom';
-
 const Product = ({ product }) => {
   const { name, brand, type, price, rating, image, _id } = product;
   return (
@@ -32,9 +31,11 @@ const Product = ({ product }) => {
           <Link to={`/products/${_id}`}><button className="py-1 px-2 text-white bg-primary hover:bg-white hover:text-black rounded-md transition duration-100">
             Details
           </button></Link>
+          <Link to={`/update/${_id}`}>
           <button className="py-1 px-2 text-white bg-primary hover:bg-white hover:text-black rounded-md transition duration-100">
             Update
           </button>
+          </Link>
         </div>
       </div>
     </div>
