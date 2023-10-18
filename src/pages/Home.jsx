@@ -1,7 +1,10 @@
+import Banner from "../components/Banner/Banner";
+
 const Home = () => {
     return (
-        <div>
-            Home
+        <div className="font-ubuntu">
+            <Banner></Banner>
+            <h1 className="min-h-screen"></h1>
         </div>
     );
 };

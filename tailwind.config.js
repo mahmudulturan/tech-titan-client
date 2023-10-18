@@ -15,7 +15,7 @@ export default {
         ubuntu: ["Ubuntu", "sans-serif"],
       },
       dropShadow: {
-        text: "4px 4px 8px",
+        text: "3px 3px 6px",
       },
     },
   },

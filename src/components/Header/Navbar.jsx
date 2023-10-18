@@ -48,7 +48,7 @@ const Navbar = () => {
   ));
 
   return (
-    <div>
+    <div  data-aos="fade-down">
       <div className="navbar md:w-10/12 mx-auto py-4 bg-transparent font-ubuntu">
         <div className="navbar-start">
           <div className="dropdown">
