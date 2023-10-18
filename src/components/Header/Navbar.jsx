@@ -1,9 +1,28 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaUserCircle } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const user = false;
+
+  useEffect(() => {
+    if(theme === "dark"){
+      document.body.classList.add('dark')
+      localStorage.setItem("theme", "dark")
+    }
+    else{
+      document.body.classList.remove('dark')
+      localStorage.setItem("theme", "light")
+    }
+  }, [theme]);
+
+  const handleToggle = e => {
+    const checked = e.target.checked;
+    console.log(checked);
+    checked? setTheme('dark') : setTheme('light')
+  }
 
   const links = [
     { title: "Home", path: "/" },
@@ -19,10 +38,10 @@ const Navbar = () => {
       to={link.path}
       className={({ isActive, isPending }) =>
         isPending
-          ? "font-medium hover:drop-shadow-text px-2 py-1 rounded-md text-lg transition-all duration-100"
+          ? "font-medium hover:drop-shadow-text px-2 py-1 rounded-md text-lg transition-all duration-100 text-text dark:text-white"
           : isActive
           ? "text-primary text-lg font-medium hover:text-accent drop-shadow-text px-2 py-1 rounded-md transition-all duration-100"
-          : "font-medium hover:drop-shadow-text px-2 py-1 rounded-md text-lg transition-all duration-100"
+          : "font-medium hover:drop-shadow-text px-2 py-1 rounded-md text-lg transition-all duration-100 text-text dark:text-white"
       }>
       {link.title}
     </NavLink>
@@ -30,7 +49,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar md:w-10/12 mx-auto my-4 bg-transparent font-nunito">
+      <div className="navbar md:w-10/12 mx-auto py-4 bg-transparent font-ubuntu">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -76,10 +95,12 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <Link to='/login'><button className="btn mx-1 md:mx-4">Login</button></Link>
+            <Link to="/login">
+              <button className="btn mx-1 md:mx-4">Login</button>
+            </Link>
           )}
           <label className="swap swap-rotate">
-            <input type="checkbox" />
+            <input  type="checkbox"  onChange={handleToggle} checked={theme === 'dark'}/>
             <svg
               className="swap-on fill-current w-7 md:w-9 h-10"
               xmlns="http://www.w3.org/2000/svg"
