@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div>
       <footer>
-        <div className="flex gap-3 justify-between flex-col md:flex-row w-10/12 mx-auto pt-10">
+        <div className="flex gap-3 justify-between flex-col md:flex-row md:w-10/12 mx-auto pt-10 px-2 md:px-0">
           <div className="">
             <img src={logo} className="w-44" alt="logo of tech titan" />
             <p className=" my-2 max-w-2xl">
