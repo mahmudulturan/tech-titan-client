@@ -10,6 +10,8 @@ import UpdateProduct from "../pages/UpdateProduct";
 import ErrorPage from "../pages/ErrorPage";
 import Register from "../pages/AuthenticationPage/Register";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
 
 const MainRoutes = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const MainRoutes = createBrowserRouter([
             {
                 path: '/my-cart',
                 element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
+            },
+            {
+                path: '/about-us',
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/contact-us',
+                element: <ContactUs></ContactUs>
             },
             {
                 path: '/login',
