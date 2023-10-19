@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { AiFillEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useState, useContext } from "react";
@@ -8,10 +8,14 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  const {loginUser} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const locate = useLocation()
+  console.log(locate);
+
   const handlePasswordShow = (e) => {
     setShow(e.target.checked);
   };
-  const {loginUser} = useContext(AuthContext);
 
   const handleLogin = e => {
     e.preventDefault();
@@ -21,7 +25,13 @@ const Login = () => {
     loginUser(email, password)
     .then(() => {
       toast.success('Successfully Login!')
-
+      if(locate.state){
+        navigate(locate.state)
+      }
+      else{
+        navigate('/')
+      }
+      // location.reload();
     })
     .catch(error=> {
       toast.error(error.message)

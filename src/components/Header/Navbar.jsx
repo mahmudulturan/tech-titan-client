@@ -1,27 +1,33 @@
 import { NavLink, Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { FaUserCircle } from "react-icons/fa";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
+import toast from 'react-hot-toast';
+
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const user = false;
+  const { user, logOut } = useContext(AuthContext);
 
   useEffect(() => {
-    if(theme === "dark"){
-      document.body.classList.add('dark')
-      localStorage.setItem("theme", "dark")
-    }
-    else{
-      document.body.classList.remove('dark')
-      localStorage.setItem("theme", "light")
+    if (theme === "dark") {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [theme]);
 
-  const handleToggle = e => {
+  const handleToggle = (e) => {
     const checked = e.target.checked;
-    console.log(checked);
-    checked? setTheme('dark') : setTheme('light')
+    checked ? setTheme("dark") : setTheme("light");
+  };
+
+  const handleLogout = () => {
+    logOut()
+    .then(()=> toast.success('LogOut Successfully!'))
   }
 
   const links = [
@@ -48,7 +54,7 @@ const Navbar = () => {
   ));
 
   return (
-    <div  data-aos="fade-down">
+    <div data-aos="fade-down">
       <div className="navbar md:w-10/12 mx-auto py-4 bg-transparent font-ubuntu">
         <div className="navbar-start">
           <div className="dropdown">
@@ -82,15 +88,27 @@ const Navbar = () => {
           {user ? (
             <div className="dropdown dropdown-end mx-1 md:mx-4">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="">
-                  <FaUserCircle className="text-3xl md:text-4xl rounded-full"></FaUserCircle>
+                <div className="rounded-full">
+                  {user?.photoURL ? (
+                    <img src={user.photoURL} alt={`image of ${user.email}`} />
+                  ) : (
+                    <FaUserCircle className="text-3xl md:text-4xl rounded-full"></FaUserCircle>
+                  )}
                 </div>
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box ">
                 <li>
-                  <a>Logout</a>
+                  {
+                    user.displayName?
+                    <p>{user.displayName}</p>
+                    :
+                    <p>{user.email}</p>
+                  }
+                </li>
+                <li>
+                  <button onClick={handleLogout}>Log Out</button>
                 </li>
               </ul>
             </div>
@@ -100,7 +118,11 @@ const Navbar = () => {
             </Link>
           )}
           <label className="swap swap-rotate">
-            <input  type="checkbox"  onChange={handleToggle} checked={theme === 'dark'}/>
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              checked={theme === "dark"}
+            />
             <svg
               className="swap-on fill-current w-7 md:w-9 h-10"
               xmlns="http://www.w3.org/2000/svg"
