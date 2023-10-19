@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import toast from 'react-hot-toast';
+import axios from "axios";
 
 
 
@@ -47,6 +48,14 @@ const Register = () => {
       })
       .catch(error => toast.error(error.message))
       navigate('/')
+      const userData = {email, name, photo}
+      axios.post('http://localhost:5000/users',userData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(() => console.log(res.data))
+      .catch(error => console.log(error))
     })
     .catch(error => toast.error(error.message))
 
@@ -68,7 +77,7 @@ const Register = () => {
               type="text"
               name="name"
               id="name"
-              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
+              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4 text-black"
             />
           </div>
           <div>
@@ -80,7 +89,7 @@ const Register = () => {
               type="text"
               name="photo"
               id="photo"
-              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
+              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4 text-black"
             />
           </div>
           <div>
@@ -92,7 +101,7 @@ const Register = () => {
               type="email"
               name="email"
               id="email"
-              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
+              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4 text-black"
             />
           </div>
           <div className="relative">
@@ -104,7 +113,7 @@ const Register = () => {
               type={`${show ? "text" : "password"}`}
               name="password"
               id="password"
-              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
+              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4 text-black"
             />
             <label className="swap swap-rotate absolute bottom-7 right-3 text-black">
               <input type="checkbox" onChange={handlePasswordShow} />

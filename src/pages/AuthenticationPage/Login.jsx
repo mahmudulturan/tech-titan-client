@@ -11,8 +11,6 @@ const Login = () => {
   const {loginUser} = useContext(AuthContext);
   const navigate = useNavigate();
   const locate = useLocation()
-  console.log(locate);
-
   const handlePasswordShow = (e) => {
     setShow(e.target.checked);
   };
@@ -54,7 +52,7 @@ const Login = () => {
               name="email"
               id="email"
               required
-              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
+              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4 text-black"
             />
           </div>
           <div className="relative">
@@ -67,7 +65,7 @@ const Login = () => {
               name="password"
               id="password"
               required
-              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
+              className="py-3 px-4 rounded-md bg-background w-full outline-none my-4 text-black"
             />
             <label className=" swap swap-rotate absolute bottom-7 right-3 text-black">
               <input type="checkbox" onChange={handlePasswordShow} />
