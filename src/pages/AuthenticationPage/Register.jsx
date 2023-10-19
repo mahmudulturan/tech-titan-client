@@ -24,7 +24,6 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    const cart = [];
 
     if(password.length<6){
       return toast.error("Password should have minimum 6 characters");
@@ -49,7 +48,7 @@ const Register = () => {
       })
       .catch(error => toast.error(error.message))
       navigate('/')
-      const userData = {email, name, photo, cart}
+      const userData = {email, name, photo}
       axios.post('http://localhost:5000/users',userData, {
         headers: {
           'Content-Type': 'application/json'
