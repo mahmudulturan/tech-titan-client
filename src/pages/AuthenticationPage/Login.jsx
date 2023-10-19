@@ -1,19 +1,31 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { AiFillEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
+import toast from 'react-hot-toast';
+
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const handlePasswordShow = (e) => {
     setShow(e.target.checked);
   };
+  const {loginUser} = useContext(AuthContext);
+
   const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    loginUser(email, password)
+    .then(() => {
+      toast.success('Successfully Login!')
 
+    })
+    .catch(error=> {
+      toast.error(error.message)
+    })
   }
   return (
     <div className="min-h-[93vh] px-2 md:px-0 py-6 md:py-10 flex items-center justify-center">
@@ -31,6 +43,7 @@ const Login = () => {
               type="email"
               name="email"
               id="email"
+              required
               className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
             />
           </div>
@@ -43,6 +56,7 @@ const Login = () => {
               type={`${show ? "text" : "password"}`}
               name="password"
               id="password"
+              required
               className="py-3 px-4 rounded-md bg-background w-full outline-none my-4"
             />
             <label className=" swap swap-rotate absolute bottom-7 right-3 text-black">

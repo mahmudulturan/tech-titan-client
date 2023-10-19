@@ -1,11 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { AiFillEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import toast from 'react-hot-toast';
+
 
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const {createUser} = useContext(AuthContext);
+  const navigate = useNavigate();
   const handlePasswordShow = (e) => {
     setShow(e.target.checked);
   };
@@ -17,6 +23,32 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    if(password.length<6){
+      return toast.error("Password should have minimum 6 characters");
+    }
+    else if(!/[A-Z]/.test(password)){
+      return toast.error("Password should have atleats one capital letter");
+    }
+    else if(!/[!@#$%^&*]/.test(password)){
+      return toast.error("Password should have atleats one special character");
+    }
+
+    createUser(email, password)
+    .then(res => {
+      const user = res.user;
+      toast.success('Successfully SignUp!')
+      updateProfile(user, {
+        displayName: name,
+        photoURL: photo
+      })
+      .then(() => {
+        location.reload();
+      })
+      .catch(error => toast.error(error.message))
+      navigate('/')
+    })
+    .catch(error => toast.error(error.message))
 
   }
   return (
@@ -83,7 +115,7 @@ const Register = () => {
           <input
             className="py-3 px-4 rounded-md bg-primary w-full outline-none my-4 text-white text-lg font-medium cursor-pointer"
             type="submit"
-            value="Login"
+            value="Sign Up"
           />
         </form>
         <p className="text-center">
