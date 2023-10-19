@@ -3,11 +3,12 @@ import RootElement from "../RootElement";
 import Home from "../pages/Home";
 import AddProduct from "../pages/AddProduct";
 import MyCart from "../pages/MyCart";
-import Login from "../pages/Login";
+import Login from "../pages/AuthenticationPage/Login";
 import BrandDetail from "../pages/BrandDetail";
 import ProductDetail from "../pages/ProductDetail";
 import UpdateProduct from "../pages/UpdateProduct";
 import ErrorPage from "../pages/ErrorPage";
+import Register from "../pages/AuthenticationPage/Register";
 
 const MainRoutes = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const MainRoutes = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             },
             {
                 path: '/brands/:id',
