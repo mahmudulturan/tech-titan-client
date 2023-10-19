@@ -7,11 +7,13 @@ import Login from "../pages/Login";
 import BrandDetail from "../pages/BrandDetail";
 import ProductDetail from "../pages/ProductDetail";
 import UpdateProduct from "../pages/UpdateProduct";
+import ErrorPage from "../pages/ErrorPage";
 
 const MainRoutes = createBrowserRouter([
     {
         path: '/',
         element: <RootElement></RootElement>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
