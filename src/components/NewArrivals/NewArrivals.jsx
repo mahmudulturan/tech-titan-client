@@ -14,7 +14,6 @@ const NewArrivals = () => {
     .then(res => setArrivals(res.data))
     .catch(error => console.log(error))
    },[])
-//    console.log(arrivals);
   return (
     <div className="min-h-[60vh] my-12 md:w-10/12 mx-auto">
       <div className="text-center my-8">

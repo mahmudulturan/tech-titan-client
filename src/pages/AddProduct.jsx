@@ -1,6 +1,5 @@
 import axios from "axios";
-import toast from 'react-hot-toast';
-
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
   const handelAddProduct = (event) => {
@@ -22,22 +21,46 @@ const AddProduct = () => {
       image,
       detail,
     };
-    axios.post('http://localhost:5000/products',productData, {
+    axios
+      .post("http://localhost:5000/products", productData, {
         headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(res=>{
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
         const data = res.data;
-        if(data.acknowledged){
-            toast.success('Successfully Added!')
-            form.reset()
+        if (data.acknowledged) {
+          toast.success("Successfully Added!");
+          form.reset();
         }
-    })
-    .catch(error=> {
-        toast.error(error.message)
-    })
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      });
   };
+
+  const categories = [
+    "Smartphones",
+    "Laptops and Computers",
+    "Audio and Headphones",
+    "Gaming and Entertainment",
+    "Home Appliances",
+    "Wearables and Accessories",
+    "Cameras and Photography",
+    "Software and Apps",
+    "Smart Home and IoT",
+    "Office and Productivity",
+    "Health and Fitness",
+    "Fashion Tech",
+    "Electronics Components",
+    "Security and Surveillance",
+    "Toys and Gadgets",
+    "Networking and Connectivity",
+    "Outdoor and Adventure",
+    "Drones and Robotics",
+    "Virtual Reality",
+    "Artificial Intelligence",
+  ];
   return (
     <div className="min-h-[93vh] my-10">
       <div className="md:w-8/12 mx-auto bg-background dark:bg-gray-600 py-8 md:px-10 px-2 rounded-md shadow-lg">
@@ -81,13 +104,14 @@ const AddProduct = () => {
             <label htmlFor="type" className="block font-medium my-2 text-lg">
               Type:
             </label>
-            <input
-              placeholder="Product Type..."
-              type="text"
-              name="type"
-              id="type"
-              className="py-2 px-3 rounded-md w-full outline-none dark:bg-slate-900 dark:placeholder:text-white"
-            />
+            <select name="type" defaultValue={"Select Product Types"} className="select w-full bg-white dark:bg-gray-900  outline-none border-0">
+              <option>
+                Select Product Types
+              </option>
+              {
+                categories.map((category, indx) => <option className="" key={indx}>{category}</option>)
+              }
+            </select>
           </div>
           <div>
             <label htmlFor="price" className="block font-medium my-2 text-lg">

@@ -2,7 +2,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
-
 const UpdateProduct = () => {
   const loadedData = useLoaderData();
   const { name, brand, type, price, rating, image, _id, detail } = loadedData;
@@ -32,9 +31,9 @@ const UpdateProduct = () => {
         },
       })
       .then((res) => {
-          const data = res.data;
+        const data = res.data;
         console.log(data);
-        if (data.modifiedCount>0) {
+        if (data.modifiedCount > 0) {
           toast.success("Successfully Updated!");
         }
       })
@@ -42,17 +41,41 @@ const UpdateProduct = () => {
         toast.error(error.message);
       });
   };
+
+  const categories = [
+    "Smartphones",
+    "Laptops and Computers",
+    "Audio and Headphones",
+    "Gaming and Entertainment",
+    "Home Appliances",
+    "Wearables and Accessories",
+    "Cameras and Photography",
+    "Software and Apps",
+    "Smart Home and IoT",
+    "Office and Productivity",
+    "Health and Fitness",
+    "Fashion Tech",
+    "Electronics Components",
+    "Security and Surveillance",
+    "Toys and Gadgets",
+    "Networking and Connectivity",
+    "Outdoor and Adventure",
+    "Drones and Robotics",
+    "Virtual Reality",
+    "Artificial Intelligence",
+  ];
   return (
     <div>
       <div className="min-h-[93vh] my-10">
         <div className="md:w-8/12 mx-auto bg-background dark:bg-gray-600 py-8 md:px-10 px-2 rounded-md shadow-lg">
           <div className="text-center">
             <h3 className="font-bold text-3xl mb-4 drop-shadow-md">
-              Update <span className="text-primary">{name}'s </span> 
+              Update <span className="text-primary">{name}'s </span>
               Information
             </h3>
             <p className="max-w-3xl mx-auto font-medium">
-            Keep your product information up to date. Use the form below to make changes or improvements to existing offerings.
+              Keep your product information up to date. Use the form below to
+              make changes or improvements to existing offerings.
             </p>
           </div>
           <form
@@ -88,14 +111,17 @@ const UpdateProduct = () => {
               <label htmlFor="type" className="block font-medium my-2 text-lg">
                 Type:
               </label>
-              <input
-                placeholder="Product Type..."
-                type="text"
+              <select
                 name="type"
-                id="type"
                 defaultValue={type}
-                className="py-2 px-3 rounded-md w-full outline-none dark:bg-slate-900 dark:placeholder:text-white"
-              />
+                className="select w-full bg-white dark:bg-gray-900  outline-none border-0">
+                <option>Select Product Types</option>
+                {categories.map((category, indx) => (
+                  <option className="" key={indx}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label htmlFor="price" className="block font-medium my-2 text-lg">
