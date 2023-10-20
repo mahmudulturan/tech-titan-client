@@ -24,8 +24,16 @@ const NewArrivals = () => {
       </div>
       <div>
         <Swiper
-          slidesPerView={3}
-          spaceBetween={50}
+        breakpoints={{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        }}
           loop={true}
           autoplay={{
             delay: 2500,
