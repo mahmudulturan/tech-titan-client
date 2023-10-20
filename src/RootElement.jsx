@@ -11,7 +11,9 @@ const RootElement = () => {
     <div className="bg-white dark:bg-gray-900 dark:text-white text-text transition duration-300 font-ubuntu">
       <Toaster position="top-center" reverseOrder={false} />
       <Header></Header>
+      <div className="min-h-[93vh]">
       <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );

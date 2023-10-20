@@ -40,7 +40,7 @@ const AddProduct = () => {
   };
   return (
     <div className="min-h-[93vh] my-10">
-      <div className="md:w-8/12 mx-auto bg-background dark:bg-text py-8 md:px-10 px-2 rounded-md shadow-lg">
+      <div className="md:w-8/12 mx-auto bg-background dark:bg-gray-600 py-8 md:px-10 px-2 rounded-md shadow-lg">
         <div className="text-center">
           <h3 className="font-bold text-3xl mb-4 drop-shadow-md">
             Add New Product
