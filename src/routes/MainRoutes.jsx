@@ -50,17 +50,17 @@ const MainRoutes = createBrowserRouter([
             {
                 path: '/brands/:id',
                 element: <BrandDetail></BrandDetail>,
-                loader: ({params}) => fetch(`http://localhost:5000/brands/${params.id}`)
+                loader: ({params}) => fetch(`https://tech-titan-server.vercel.app/brands/${params.id}`)
             },
             {
                 path: '/products/:id',
                 element: <PrivateRoute><ProductDetail></ProductDetail></PrivateRoute> ,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params}) => fetch(`https://tech-titan-server.vercel.app/products/${params.id}`)
             },
             {
                 path: '/update/:id',
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({params}) => fetch(`https://tech-titan-server.vercel.app/products/${params.id}`)
             },
         ]
     }

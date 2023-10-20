@@ -10,7 +10,7 @@ const MyCart = () => {
   const email = user.email;
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/${email}`)
+      .get(`https://tech-titan-server.vercel.app/users/${email}`)
       .then((res) => setCart(res.data))
       .catch((error) => console.error(error));
   }, [email]);

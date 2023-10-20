@@ -12,7 +12,7 @@ const BrandDetail = () => {
   const brand = useLoaderData();
   const [products, setProducts] = useState([]);
   useEffect(()=> {
-    axios.get(`http://localhost:5000/brand/${brand.name}`)
+    axios.get(`https://tech-titan-server.vercel.app/brand/${brand.name}`)
     .then(res => setProducts(res.data))
     .catch(error => console.log(error))
   },[brand])

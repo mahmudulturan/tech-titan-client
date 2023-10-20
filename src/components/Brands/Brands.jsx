@@ -4,7 +4,7 @@ import Brand from './Brand';
 const Brands = () => {
     const [brands, setBrands] = useState([])
     useEffect(()=> {
-        axios.get('http://localhost:5000/brands')
+        axios.get('https://tech-titan-server.vercel.app/brands')
         .then(res => setBrands(res.data))
         .catch(error => console.log(error))
     },[])

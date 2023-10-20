@@ -49,7 +49,7 @@ const Register = () => {
       .catch(error => toast.error(error.message))
       navigate('/')
       const userData = {email, name, photo}
-      axios.post('http://localhost:5000/users',userData, {
+      axios.post('https://tech-titan-server.vercel.app/users',userData, {
         headers: {
           'Content-Type': 'application/json'
         }

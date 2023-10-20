@@ -15,7 +15,7 @@ const ProductDetail = () => {
 
   const handleAddCart = () => {
     axios
-      .patch("http://localhost:5000/cart", data, {
+      .patch("https://tech-titan-server.vercel.app/cart", data, {
         headers: {
           "Content-Type": "application/json",
         },

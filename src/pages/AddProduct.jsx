@@ -22,7 +22,7 @@ const AddProduct = () => {
       detail,
     };
     axios
-      .post("http://localhost:5000/products", productData, {
+      .post("https://tech-titan-server.vercel.app/products", productData, {
         headers: {
           "Content-Type": "application/json",
         },

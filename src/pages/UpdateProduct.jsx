@@ -25,7 +25,7 @@ const UpdateProduct = () => {
       detail,
     };
     axios
-      .put(`http://localhost:5000/products/${_id}`, productData, {
+      .put(`https://tech-titan-server.vercel.app/products/${_id}`, productData, {
         headers: {
           "Content-Type": "application/json",
         },

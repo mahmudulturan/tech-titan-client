@@ -13,7 +13,7 @@ const CartItem = ({ product, setCart, cart }) => {
   const handleRemoveCart = () => {
     console.log('clicked');
     axios
-      .patch("http://localhost:5000/cart/remove", data, {
+      .patch("https://tech-titan-server.vercel.app/cart/remove", data, {
         headers: {
           "Content-Type": "application/json",
         },

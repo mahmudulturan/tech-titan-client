@@ -10,7 +10,7 @@ import NewItem from './NewItem';
 const NewArrivals = () => {
    const [arrivals, setArrivals] = useState();
    useEffect(()=>{
-    axios.get('http://localhost:5000/latest')
+    axios.get('https://tech-titan-server.vercel.app/latest')
     .then(res => setArrivals(res.data))
     .catch(error => console.log(error))
    },[])
