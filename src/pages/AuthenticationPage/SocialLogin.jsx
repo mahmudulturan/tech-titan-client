@@ -1,8 +1,9 @@
-import {  BsGoogle } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const SocialLogin = () => {
   const { googleLogin } = useContext(AuthContext);
@@ -10,8 +11,21 @@ const SocialLogin = () => {
   const locate = useLocation();
   const handleSocialLogin = (method) => {
     method()
-      .then(() => {
+      .then((res) => {
         toast.success("Successfully Login!");
+        const user = res.user;
+        const email = user.email;
+        const name = user.displayName;
+        const photo = user.photoURL;
+        const userData = { email, name, photo };
+        axios
+          .post("https://tech-titan-server.vercel.app/users", userData, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then(() => console.log(res.data))
+          .catch((error) => console.log(error));
         if (locate.state) {
           navigate(locate.state);
         } else {
@@ -19,7 +33,7 @@ const SocialLogin = () => {
         }
       })
       .catch((error) => {
-        toast.error(error.message)
+        toast.error(error.message);
       });
   };
   return (
