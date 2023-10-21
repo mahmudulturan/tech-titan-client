@@ -8,10 +8,10 @@ const NewItem = ({ product }) => {
 
   return (
     <div
-      className="group flex flex-col justify-center items-center my-8"
+      className="group flex flex-col justify-center items-center my-8 rounded-md"
       draggable>
-      <div className="relative overflow-hidden bg-slate-600">
-        <img src={image} className="w-96 h-96 py-4 px-4" alt="" />
+      <div className="relative overflow-hidden bg-slate-600 rounded-md">
+        <img src={image} className="w-96 h-[350px] py-4 px-4" alt="" />
         <div className="absolute -top-96 group-hover:top-0  duration-300 transition-transform flex items-center justify-center w-full h-full">
           <Link to={`/products/${_id}`}>
             <button className="py-2 px-4 text-white hover:bg-white hover:text-text bg-primary transition duration-150 font-medium">
