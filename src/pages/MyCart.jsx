@@ -15,7 +15,7 @@ const MyCart = () => {
       .catch((error) => console.error(error));
   }, [email]);
   return (
-    <div className="md:w-10/12 mx-auto min-h-[93vh]">
+    <div data-aos="fade-up" className="md:w-10/12 mx-auto min-h-[93vh]">
       {cart.length > 0 ? (
         <div>
           <div className="text-center">

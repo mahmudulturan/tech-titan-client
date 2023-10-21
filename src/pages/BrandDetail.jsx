@@ -18,8 +18,8 @@ const BrandDetail = () => {
   },[brand])
   const bannerSliders = brand.advertisements;
   return (
-    <div className="min-h-[93vh]">
-      <div data-aos="fade-up" >
+    <div data-aos="fade-up"  className="min-h-[93vh]">
+      <div >
       <Swiper
         navigation={true}
         loop={true}

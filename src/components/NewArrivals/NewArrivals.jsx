@@ -15,7 +15,7 @@ const NewArrivals = () => {
     .catch(error => console.log(error))
    },[])
   return (
-    <div className="min-h-[60vh] my-12 md:w-10/12 mx-auto">
+    <div data-aos="fade-up" className="min-h-[60vh] my-12 md:w-10/12 mx-auto">
       <div className="text-center my-8">
         <h3 className="font-bold text-4xl mb-4 drop-shadow-md text-primary">
           New Arrivals, New Possibilities

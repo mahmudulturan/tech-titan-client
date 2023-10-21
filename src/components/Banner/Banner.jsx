@@ -8,12 +8,12 @@ const Banner = () => {
         }}>
         <div className="bg-white/60 dark:bg-gray-900/60">
           <div className="md:w-10/12 px-2 md:px-0 mx-auto min-h-[93vh] flex flex-col md:flex-row items-center justify-between">
-            <div className="flex-1" data-aos="zoom-out">
-              <h1 className="text-6xl font-bold text-center drop-shadow-text my-4">
+            <div data-aos="zoom-out">
+              <h1 className="text-6xl font-bold drop-shadow-text my-4">
                 <span className="text-text dark:text-white">Unleash the Power of</span> <br />{" "}
                 <span className="text-primary">Titans in Tech.</span>
               </h1>
-              <p className="font-medium text-center drop-shadow-sm text-text dark:text-white max-w-3xl mx-auto">
+              <p className="font-medium drop-shadow-sm text-text/90 dark:text-white max-w-3xl">
                 Tech Titan embodies limitless innovation, unlocking the full
                 potential of technology. Join us to experience the unparalleled
                 power and possibilities that tech titans bring to the world of

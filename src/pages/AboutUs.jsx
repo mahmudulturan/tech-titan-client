@@ -32,7 +32,7 @@ const AboutUs = () => {
     },
   ];
   return (
-    <div className=" bg-background dark:bg-text">
+    <div data-aos="fade-down" className=" bg-background dark:bg-text">
       <div className="md:w-10/12 mx-auto py-12">
         <div className="text-center mb-6">
           <h3 className="font-bold text-4xl mb-4 drop-shadow-md text-primary">

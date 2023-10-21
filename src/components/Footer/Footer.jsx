@@ -2,7 +2,7 @@ import logo from "../../assets/logo.png";
 import {Link} from 'react-router-dom'
 const Footer = () => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <footer>
         <div className="flex gap-3 justify-between flex-col md:flex-row md:w-10/12 mx-auto pt-10 px-2 md:px-0">
           <div className="">

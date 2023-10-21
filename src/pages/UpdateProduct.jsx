@@ -65,7 +65,7 @@ const UpdateProduct = () => {
     "Artificial Intelligence",
   ];
   return (
-    <div>
+    <div data-aos="fade-up">
       <div className="min-h-[93vh] my-10">
         <div className="md:w-8/12 mx-auto bg-background dark:bg-gray-600 py-8 md:px-10 px-2 rounded-md shadow-lg">
           <div className="text-center">
